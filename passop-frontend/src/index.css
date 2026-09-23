@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-lprimary: #8BBB92;
+    --color-dprimary: #092328;
+    --color-lsecondary: #2A835F;
+    --color-dsecondary: #12544F;
+
+    --font-dm-serif: "DM Serif Display", serif;
+    --font-raleway: "Raleway", sans-serif;
+}
+
+body {
+    background-color: #eff4ef;
+    color: var(--color-dprimary);
+    font-family: 'DM Serif Display', serif;
+}
+
+.dark body {
+    background-color: var(--color-dprimary);
+    color: var(--color-lprimary);
+}
+
+p {
+    font-family: var(--font-raleway);
+}
+
+.bg-blueprint {
+  background-color: #fafbfa;
+  background-image: 
+    linear-gradient(to right, rgba(9, 35, 40, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(9, 35, 40, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, #000 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, #000 70%, transparent 100%);
+}
+
+.dark .bg-blueprint {
+  background-color: #07171a;
+  background-image: 
+    linear-gradient(to right, rgba(139, 187, 146, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 187, 146, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
