@@ -170,3 +170,11 @@ docker buildx build --platform linux/amd64 -t shaadcodes/passop-backend:latest -
 ### License
 
 Distributed under the MIT License.
+
+# Screenshots
+
+### How users are stored
+![Users storage](./screenshots/users.png)
+
+### How passwords are stored
+![Users storage](./screenshots/passwords.png)
