@@ -11,13 +11,7 @@ import {
   FiCheckCircle,
   FiMessageSquare,
 } from "react-icons/fi";
-
-interface ContactInputs {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+import type { ContactInputs } from "../types/interfaces";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -30,11 +24,28 @@ export default function Contact() {
   } = useForm<ContactInputs>();
 
   const onSubmit: SubmitHandler<ContactInputs> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    console.log("Feedback / Contact Payload:", data);
-    setSubmitted(true);
-    reset();
-    setTimeout(() => setSubmitted(false), 5000);
+    try {
+      const payload = {
+        name: data.name,
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+      };
+
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/connect`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        reset();
+        setTimeout(() => setSubmitted(false), 3000);
+      }
+    } catch (error) {
+      console.error("Submission error: ", error);
+    }
   };
 
   return (

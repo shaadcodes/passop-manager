@@ -56,6 +56,7 @@ func main() {
 	})
 	router.Post("/api/users/register", handlers.RegisterUser(pool))
 	router.Post("/api/users/login", handlers.LoginUser(pool))
+	router.Post("/api/connect", handlers.HandleContactSubmit)
 
 	router.Group(func(r chi.Router) {
 		r.Use(middleware.AuthMiddleWare)

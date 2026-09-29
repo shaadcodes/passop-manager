@@ -53,3 +53,10 @@ export interface Inputs {
   username: string;
   password: string;
 }
+
+export interface ContactInputs {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
